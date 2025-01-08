@@ -1,0 +1,10 @@
+.air.toml
+.env
+.git/
+tmp/
+
+*.log
+*.tmp
+*.bak
+*_templ.go
+*_templ.txt
