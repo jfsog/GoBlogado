@@ -2,6 +2,7 @@
 .env
 .git/
 tmp/
+static/css/style.css
 
 *.log
 *.tmp
