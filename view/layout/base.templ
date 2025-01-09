@@ -1,64 +1,71 @@
 package layout
 
-import "github.com/jfsog/GoBlogado/view/user"
 
-templ header() {
+templ cabecalho() {
+	<header>
+		<div class="container">
+			<h1>Meu Blog em Golang</h1>
+			<nav>
+				<ul>
+					<li><a href="/" aria-label="Página inicial">Home</a></li>
+					<li><a href="/login" aria-label="Página de login">Login</a></li>
+					<li><a href="/register" aria-label="Página de registro">Registrar</a></li>
+					<li><a href="/about" aria-label="Sobre o blog">Sobre</a></li>
+					<li><a href="/contact" aria-label="Contato">Contato</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+}
+templ header(titulo string) {
 	<head>
-		<title>Meu Blog</title>
+		<title>{ titulo }</title>
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link rel="stylesheet" href="static/css/style.css"/>
 		<script src="static/js/htmx.min.js" defer></script>
 	</head>
 }
-
 templ Base() {
-	@header()
+	@header("Meu blog")
 	<body>
 		<!-- Cabeçalho -->
-		<header>
-			<div class="container">
-				<h1>Meu Blog em Golang</h1>
-				<nav>
-					<ul>
-						<li><a href="/" aria-label="Página inicial">Home</a></li>
-						<li><a href="/login" aria-label="Página de login">Login</a></li>
-						<li><a href="/register" aria-label="Página de registro">Registrar</a></li>
-						<li><a href="/about" aria-label="Sobre o blog">Sobre</a></li>
-						<li><a href="/contact" aria-label="Contato">Contato</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
+		@cabecalho()
 		<!-- Conteúdo Principal -->
-		<main class="container">
-			<!-- Mostra o usuário logado -->
-			@user.Show()
-			<!-- Lista de Posts -->
-			<section aria-labelledby="posts">
-				<h2 id="posts">Posts Recentes</h2>
-				<article>
-					<h3><a href="/post/1">Título do Post 1</a></h3>
-					<p>Resumo do post 1. Este é um pequeno trecho do conteúdo...</p>
-					<a href="/post/1" class="read-more" aria-label="Leia mais sobre Título do Post 1">Leia mais</a>
-				</article>
-				<article>
-					<h3><a href="/post/2">Título do Post 2</a></h3>
-					<p>Resumo do post 2. Este é um pequeno trecho do conteúdo...</p>
-					<a href="/post/2" class="read-more" aria-label="Leia mais sobre Título do Post 2">Leia mais</a>
-				</article>
-				<!-- Adicione mais artigos conforme necessário -->
-			</section>
-			<!-- Botão para criar novo post -->
-			<button hx-put="/novo" class="btn btn-primary">
-				Novo Post
-			</button>
+		<main class="container" id="mainContent">
+			@home()
 		</main>
-		<!-- Rodapé -->
-		<footer>
-			<div class="container">
-				<p>&copy; 2025 Felipe Souza.</p>
-			</div>
-		</footer>
+		@footer()
 	</body>
+}
+
+templ home() {
+	<!-- Lista de Posts -->
+	<section aria-labelledby="posts">
+		<h2 id="posts">Posts Recentes</h2>
+		<article>
+			<h3><a href="/post/1">Título do Post 1</a></h3>
+			<p>Resumo do post 1. Este é um pequeno trecho do conteúdo...</p>
+			<a href="/post/1" class="read-more" aria-label="Leia mais sobre Título do Post 1">Leia mais</a>
+		</article>
+		<article>
+			<h3><a href="/post/2">Título do Post 2</a></h3>
+			<p>Resumo do post 2. Este é um pequeno trecho do conteúdo...</p>
+			<a href="/post/2" class="read-more" aria-label="Leia mais sobre Título do Post 2">Leia mais</a>
+		</article>
+		<!-- Adicione mais artigos conforme necessário -->
+	</section>
+	<!-- Botão para criar novo post -->
+	<button hx-put="/novo" class="btn btn-primary">
+		Novo Post
+	</button>
+}
+
+templ footer() {
+	<!-- Rodapé -->
+	<footer>
+		<div class="container">
+			<p>&copy; 2025 Felipe Souza.</p>
+		</div>
+	</footer>
 }

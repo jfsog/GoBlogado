@@ -4,6 +4,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/labstack/echo/v4"
 
 	"github.com/jfsog/GoBlogado/handler"
@@ -11,9 +13,12 @@ import (
 
 func main() {
 	e := echo.New()
-	// e.Static("/static", "static")
 	e.StaticFS(e.AcquireContext().Path(), e.Filesystem)
 	uh := handler.UsersHandler{}
 	e.GET("/", uh.HandleBase)
-	e.Logger.Fatal(e.Start(":8080"))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	e.Logger.Fatal(e.Start(":" + port))
 }
