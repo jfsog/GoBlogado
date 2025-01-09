@@ -16,6 +16,8 @@ func main() {
 	e.StaticFS(e.AcquireContext().Path(), e.Filesystem)
 	uh := handler.UsersHandler{}
 	e.GET("/", uh.HandleBase)
+	e.GET("/about", uh.HandleAbout)
+	e.GET("/posts", uh.HandlePosts)
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"

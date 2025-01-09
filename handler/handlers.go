@@ -14,5 +14,13 @@ func (h UsersHandler) HandleUserShow(c echo.Context) error {
 }
 
 func (h UsersHandler) HandleBase(c echo.Context) error {
-	return render(c, layout.Base())
+	return render(c, layout.Base(layout.Posts()))
+}
+
+func (h UsersHandler) HandleAbout(c echo.Context) error {
+	return render(c, layout.About())
+}
+
+func (h UsersHandler) HandlePosts(c echo.Context) error {
+	return render(c, layout.Posts())
 }
