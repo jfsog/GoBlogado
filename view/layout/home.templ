@@ -1,7 +1,6 @@
 package layout
 
 templ Posts() {
-	<!-- Lista de Posts -->
 	<section aria-labelledby="posts">
 		<h2 id="posts">Posts Recentes</h2>
 		<article>
@@ -14,9 +13,7 @@ templ Posts() {
 			<p>Resumo do post 2. Este é um pequeno trecho do conteúdo...</p>
 			<a href="/post/2" class="read-more" aria-label="Leia mais sobre Título do Post 2">Leia mais</a>
 		</article>
-		<!-- Adicione mais artigos conforme necessário -->
 	</section>
-	<!-- Botão para criar novo post -->
 	<button hx-put="/novo" class="btn btn-primary">
 		Novo Post
 	</button>

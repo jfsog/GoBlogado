@@ -3,10 +3,11 @@
 .git/
 bin/
 tmp/
+templ/
 
 *.log
 *.tmp
 *.bak
 # static/css/style.css
-# *_templ.go
-# *_templ.txt
+*_templ.go
+*_templ.txt
