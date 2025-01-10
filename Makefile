@@ -2,7 +2,7 @@ run:
 	@go build -o bin/main && ./bin/main
 build:
 	@./install_templ.sh
-	@./templ/templ generate 
+	@./bin/templ generate 
 	@go build -o bin/main
 live: # usado para desenvolvimento
 	@templ generate --watch -proxybind="localhost" --proxy="http://localhost:8090" --cmd="air"
