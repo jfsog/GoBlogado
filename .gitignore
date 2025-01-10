@@ -1,11 +1,12 @@
 .air.toml
 .env
 .git/
+bin/
 tmp/
-static/css/style.css
 
 *.log
 *.tmp
 *.bak
-*_templ.go
-*_templ.txt
+# static/css/style.css
+# *_templ.go
+# *_templ.txt
